@@ -1,4 +1,4 @@
-**Purpose**: Strategic planning and roadmap development
+**Purpose**: Implementation planning and roadmap development (planning only, no implementation)
 
 ---
 
@@ -9,7 +9,7 @@ Execute: immediate. --plan→show plan first
 Legend: Generated based on symbols used in command
 Purpose: "Create comprehensive plans & roadmaps for $ARGUMENTS"
 
-Develop strategic plans, roadmaps, and documentation frameworks for projects, features, or initiatives specified in $ARGUMENTS. Performs thorough existing codebase research and analysis before planning. Actively utilizes web search and multiple subagents for comprehensive research and evaluation to ensure thorough planning coverage.
+Develop strategic plans, roadmaps, and documentation frameworks for projects, features, or initiatives specified in $ARGUMENTS. Creates implementation plans only - does not perform actual implementation. Performs thorough existing codebase research and analysis before planning. Actively utilizes web search and multiple subagents for comprehensive research and evaluation to ensure thorough planning coverage.
 
 @include shared/flag-inheritance.yml#Universal_Always
 
