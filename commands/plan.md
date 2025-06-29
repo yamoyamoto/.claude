@@ -44,7 +44,7 @@ Examples:
 **4. Documentation Framework**
 - Overall plan (basic design/requirements)
 - Detailed design specifications
-- Comprehensive TODO list with task dependencies clearly mapped
+- Essential TODO list with task dependencies clearly mapped (no optional items)
 
 ## Auto-Generated Documentation
 
@@ -62,6 +62,7 @@ The `/plan` command automatically generates three complementary documents in the
 - Integration points and system design
 
 **3. TODO List Document** (`[subject]-todo-list.md`)
+- Essential tasks only (no optional items)
 - Prioritized actionable tasks with clear ownership
 - Task dependencies and sequencing requirements clearly mapped
 
@@ -82,7 +83,7 @@ The `/plan` command automatically generates three complementary documents in the
 **Three-Document Planning Suite:**
 - **Overall Plan**: Strategic framework with objectives
 - **Detailed Design**: Technical specifications, implementation approach, and integration details  
-- **TODO List**: Prioritized tasks with clearly mapped dependencies
+- **TODO List**: Essential tasks only with clearly mapped dependencies (no optional items)
 
 **Integrated Planning System:** Cross-referenced documents | Task dependency mapping
 
