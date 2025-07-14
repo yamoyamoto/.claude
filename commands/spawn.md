@@ -1,4 +1,4 @@
-**Purpose**: Parallel specialized agents
+**Purpose**: Parallel task execution with TODO-driven implementation
 
 ---
 
@@ -7,134 +7,70 @@
 ## Command Execution
 Execute: immediate. --plan→show plan first
 Legend: Generated based on symbols used in command
-Purpose: "[Action][Subject] in $ARGUMENTS"
+Purpose: "Execute tasks from TODO list with parallel sub-agents"
 
-Spawn specialized sub-agents for focused tasks with parallel execution capabilities.
+Spawn multiple sub-agents to execute tasks in parallel. Accepts TODO list as input, reads linked overall plan and detailed design documents to understand full context, then implements tasks efficiently with maximum parallelization.
 
 @include shared/flag-inheritance.yml#Universal_Always
 
 Examples:
-- `/spawn --agent researcher "OAuth 2.0 best practices"` - Research then implement
-- `/spawn --mode parallel --agent builder "User auth, Profile API"` - Parallel development
-- `/spawn --mode sequential "Research → Build → Review payment"` - Full cycle workflow
-- `/spawn --mode collaborative --ultrathink "Design microservices"` - Collaborative design
+- `/spawn "path/to/todo-list.md"` - Execute TODO list with parallel agents
+- `/spawn --mode sequential "path/to/todo-list.md"` - Sequential execution when dependencies require
+- `/spawn --ultrathink "complex-system-todo.md"` - Deep analysis before parallel execution
 
-## Agent Types
+## Core Features
 
-Researcher Agent:
-- Deep dive into topics
-- Compare solutions
-- Analyze trade-offs
-- Find best practices
-- Document findings
+**TODO-Driven Execution:**
+- Accept TODO list document as primary input
+- Automatically read linked overall plan & detailed design docs
+- Understand full project context before execution
+- Track task dependencies and optimize execution order
 
-Builder Agent:
-- Generate code
-- Implement features
-- Create tests
-- Build prototypes
-- Integrate systems
-
-Reviewer Agent:
-- Code quality checks
-- Security analysis
-- Performance review
-- Best practice validation
-- Suggest improvements
-
-Optimizer Agent:
-- Performance profiling
-- Resource optimization
-- Algorithm improvements
-- Database tuning
-- Cache strategies
-
-Documenter Agent:
-- API documentation
-- User guides
-- Code comments
-- Architecture docs
-- README files
+**Parallel Sub-Agent Architecture:**
+- Spawn multiple agents for independent tasks
+- Maximum parallelization for efficiency
+- Intelligent task distribution
+- Result integration and coordination
 
 ## Execution Modes
 
-Sequential Mode:
-```yaml
-Flow: Agent1 → Agent2 → Agent3
-Use: When tasks depend on each other
-Example: Research → Build → Review
-```
+**Parallel (Default):** Independent tasks → Maximum concurrency
+**Sequential:** Dependency chain → Ordered execution
+**Hybrid:** Smart batching → Parallel groups with dependencies
 
-Parallel Mode:
-```yaml
-Flow: Agent1 | Agent2 | Agent3
-Use: For independent tasks
-Example: Multiple feature builds
-```
+## Process Flow
 
-Collaborative Mode:
-```yaml
-Flow: Agents work together
-Use: Complex problems
-Example: System design session
-```
+1. **Read TODO list** → Parse tasks & dependencies
+2. **Read linked docs** → Overall plan & detailed design
+3. **Analyze dependencies** → Build execution graph
+4. **Spawn sub-agents** → Parallel execution
+5. **Integrate results** → Unified output
 
 ## Best Practices
 
-Task Definition:
-- Clear objectives
-- Specific deliverables
-- Success criteria
-- Resource limits
-- Time constraints
-
-Agent Selection:
-- Match expertise to task
-- Consider dependencies
-- Plan coordination
-- Set boundaries
-- Define handoffs
-
-Coordination:
-- Clear communication
-- Shared context
-- Progress tracking
-- Result integration
-- Quality control
+- Ensure TODO lists include clear dependencies
+- Link all related documents in TODO header
+- Use parallel mode for maximum efficiency
+- Monitor sub-agent progress via unified dashboard
 
 ## Examples
 
 ```bash
-# Research then implement
-/spawn --agent researcher "OAuth 2.0 best practices"
-/spawn --agent builder "Implement OAuth based on research"
+# Execute TODO list with auto-parallelization
+/spawn "feature-x-todo-list.md"
 
-# Parallel feature development
-/spawn --mode parallel --agent builder "User auth, Profile API, Settings UI"
+# Force sequential for complex dependencies
+/spawn --mode sequential "migration-todo-list.md"
 
-# Full cycle with review
-/spawn --mode sequential "Research → Build → Review payment integration"
-
-# Collaborative system design
-/spawn --mode collaborative --ultrathink "Design microservices architecture"
+# Deep analysis before execution
+/spawn --ultrathink "system-redesign-todo.md"
 ```
-
-## Integration
-
-Works with:
-- All command flags pass through
-- Inherits persona preferences
-- Shares project context
-- Accumulates findings
-- Coordinates outputs
 
 ## Deliverables
 
-- Agent execution logs
-- Task completion reports
-- Integrated results
+- Parallel execution logs
+- Task completion status
+- Integrated implementation
 - Performance metrics
-- Lessons learned
-- Handoff documentation
 
 @include shared/universal-constants.yml#Standard_Messages_Templates
