@@ -1,5 +1,7 @@
 **Purpose**: Implementation planning and roadmap development (planning only, no implementation)
 
+**CRITICAL: This command is for PLANNING ONLY. NEVER perform any implementation, code writing, or file creation beyond the planning documents. (計画のみ・実装は絶対に行わない)**
+
 ---
 
 @include shared/universal-constants.yml#Universal_Legend
@@ -8,11 +10,13 @@
 
 Execute: immediate. --plan→show plan first
 Legend: Generated based on symbols used in command
-Purpose: "Create comprehensive plans & roadmaps for $ARGUMENTS"
+Purpose: "Create comprehensive plans & roadmaps for $ARGUMENTS" (PLANNING ONLY - NO IMPLEMENTATION)
 
 Develop strategic plans, roadmaps, and documentation frameworks for projects, features, or initiatives specified in $ARGUMENTS. Creates implementation plans only - does not perform actual implementation. Performs thorough existing codebase research and analysis before planning. Actively utilizes web search and multiple subagents for comprehensive research and evaluation to ensure thorough planning coverage.
 
 **IMPORTANT: All planning documents MUST be written in Japanese (日本語で記述すること)**
+
+**NEVER IMPLEMENT: This command must ONLY create planning documents. Do NOT write any implementation code, create any feature files, or perform any actual development work. (実装は絶対に行わない・計画書の作成のみ)**
 
 @include shared/flag-inheritance.yml#Universal_Always
 
