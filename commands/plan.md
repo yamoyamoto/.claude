@@ -14,6 +14,18 @@ Purpose: "Create comprehensive plans & roadmaps for $ARGUMENTS" (PLANNING ONLY -
 
 Develop strategic plans, roadmaps, and documentation frameworks for projects, features, or initiatives specified in $ARGUMENTS. Creates implementation plans only - does not perform actual implementation. Performs thorough existing codebase research and analysis before planning. Actively utilizes web search and multiple subagents for comprehensive research and evaluation to ensure thorough planning coverage.
 
+**Agent Utilization**: This command MUST use agents defined in `.claude/agents/` directory:
+- `product-manager-pdm` for requirements and user value analysis
+- `software-architect` for system design and architecture
+- `senior-developer-xp` for implementation details (respects no-test rule)
+- `code-review-expert` for plan validation
+
+**CRITICAL: Parallel Execution Required**
+- Execute multiple agents simultaneously wherever possible
+- Use single message with multiple Task tool calls for parallel execution
+- Only use sequential execution when dependencies require it
+- Phases 1, 3, and 5 MUST run agents in parallel for efficiency
+
 **IMPORTANT: All planning documents MUST be written in Japanese (日本語で記述すること)**
 
 **NEVER IMPLEMENT: This command must ONLY create planning documents. Do NOT write any implementation code, create any feature files, or perform any actual development work. (実装は絶対に行わない・計画書の作成のみ)**
@@ -36,27 +48,62 @@ Examples:
 
 ## Planning Process
 
-**1. Discovery & Research**
+**CRITICAL: Test Writing Rule**
+- **NEVER write tests in projects without existing test infrastructure**
+- **NO Test-Driven Development (TDD) in projects without tests**
+- Check for existing test files/frameworks before planning any test-related tasks
+- If no tests exist in the project, exclude all test-related tasks from the plan
 
-- Thorough existing codebase analysis and understanding
-- Current state assessment
-- Constraint identification
-- Competitive landscape (when applicable)
+**Agent-Based Workflow for All Implementation Tasks:**
 
-**2. Strategic Design**
+**Phase 1: Initial Discovery (PARALLEL EXECUTION)**
+Execute these agents simultaneously for maximum efficiency:
+- **Product Manager (PdM)**: Define user needs, business requirements, and success criteria
+- **Software Architect**: Analyze technical feasibility and existing architecture
+- **Code Review Expert**: Audit current codebase for patterns and potential issues
+- **Additional Research Agents**: Technology evaluation, competitive analysis, best practices
 
-- Objective prioritization
-- Approach selection and validation
+**Phase 2: Requirements Synthesis**
+- **PdM + Architect Collaboration**: Merge business and technical perspectives
+- Finalize requirements based on all parallel inputs
+- Test infrastructure detection (determines if tests will be included)
 
-**3. Tactical Planning**
+**Phase 3: Design Development (PARALLEL EXECUTION)**
+Execute these agents simultaneously:
+- **Software Architect**: High-level system design
+  - System boundaries and component architecture
+  - Integration points and data flow
+  - Technology stack decisions
+- **Senior Developer**: Implementation approach research
+  - Code patterns and conventions analysis
+  - Framework and library evaluation
+  - Development effort estimation
 
-- Task breakdown and sequencing
+**Phase 4: Detailed Planning (SEQUENTIAL)**
+- **Senior Developer**: Create detailed specifications based on architect's design
+  - Implementation approach
+  - API contracts
+  - Error handling strategies
+  - **Test strategy ONLY if existing tests are detected**
 
-**4. Documentation Framework**
+**Phase 5: Final Review (PARALLEL EXECUTION)**
+Execute these agents simultaneously for comprehensive validation:
+- **Code Review Expert**: Technical review
+  - Architecture alignment
+  - Security considerations
+  - Best practices compliance
+- **Product Manager**: Business alignment review
+  - Requirements coverage
+  - Success criteria validation
+- **Software Architect**: Design coherence review
+  - System integration validation
+  - Scalability verification
 
+**Phase 6: Documentation Integration**
+- Merge all parallel outputs into cohesive documentation
 - Overall plan (basic design/requirements)
 - Detailed design specifications
-- Essential TODO list with task dependencies clearly mapped (no optional items)
+- Essential TODO list with task dependencies clearly mapped
 
 ## Auto-Generated Documentation
 
@@ -77,6 +124,7 @@ The `/plan` command automatically generates three complementary documents in the
 - Technical specifications and architecture details
 - Implementation approach and considerations
 - Integration points and system design
+- **Test Strategy Section**: ONLY included if existing tests are detected in the project
 - **Cross-references section with paths to overall plan and TODO list documents**
 
 **3. TODO List Document** (`[subject]-todo-list.md`)
@@ -89,11 +137,26 @@ The `/plan` command automatically generates three complementary documents in the
 
 ## Subagent Integration
 
-**Research Tasks:** Technology evaluation | Best practice research | Competitive analysis | Web search for latest information
+**Parallel Execution Strategy:**
+- **ALWAYS execute independent agents in parallel** to maximize efficiency
+- Use single message with multiple Task tool invocations for parallel execution
+- Only enforce sequential execution where dependencies exist
 
-**Evaluation Tasks:** Option comparison | Impact analysis | Feasibility studies
+**Core Agents (from `.claude/agents/`):**
+- **product-manager-pdm**: Requirements, user value, success criteria
+- **software-architect**: System design, technology decisions, architecture
+- **senior-developer-xp**: Implementation details, code patterns (NO TDD if no tests exist)
+- **code-review-expert**: Validation, security, best practices
+- **refactoring-engineer**: Code improvement strategies (when applicable)
 
-**Auto-Utilization:** Multiple subagents are actively used for comprehensive research and evaluation to ensure thorough planning coverage across all planning scenarios.
+**Parallel Execution Groups:**
+1. **Discovery Phase**: PdM + Architect + Reviewer + Research agents (ALL PARALLEL)
+2. **Design Phase**: Architect + Developer research (PARALLEL)
+3. **Review Phase**: Reviewer + PdM + Architect validation (ALL PARALLEL)
+
+**Additional Research Agents:** Technology evaluation | Best practices | Competitive analysis | Web search
+
+**Efficiency Principle:** Maximize parallel agent execution. Sequential only when outputs depend on previous phase.
 
 @include shared/task-management-patterns.yml#Planning_Integration
 
