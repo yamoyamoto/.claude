@@ -48,11 +48,14 @@ Examples:
 
 ## Planning Process
 
-**CRITICAL: Test Writing Rule**
-- **NEVER write tests in projects without existing test infrastructure**
-- **NO Test-Driven Development (TDD) in projects without tests**
-- Check for existing test files/frameworks before planning any test-related tasks
-- If no tests exist in the project, exclude all test-related tasks from the plan
+**CRITICAL: Planning Rules**
+- **NEVER include Phase 0 (prototype/preliminary) tasks** - Start directly with Phase 1
+- **Test Writing Rule**: Check for existing test files/frameworks before planning any test-related tasks
+  - If no tests exist in the project, exclude all test-related tasks from the plan
+  - Only include tests if test infrastructure exists AND user hasn't explicitly excluded them
+- **NEVER include documentation or release preparation tasks** unless explicitly requested
+- **NEVER include performance monitoring tasks** unless explicitly requested
+- Focus on essential implementation tasks only
 
 **Agent-Based Workflow for All Implementation Tasks:**
 
@@ -67,6 +70,7 @@ Execute these agents simultaneously for maximum efficiency:
 - **PdM + Architect Collaboration**: Merge business and technical perspectives
 - Finalize requirements based on all parallel inputs
 - Test infrastructure detection (determines if tests will be included)
+- Focus on implementation requirements only
 
 **Phase 3: Design Development (PARALLEL EXECUTION)**
 Execute these agents simultaneously:
@@ -99,11 +103,11 @@ Execute these agents simultaneously for comprehensive validation:
   - System integration validation
   - Scalability verification
 
-**Phase 6: Documentation Integration**
+**Phase 5: Documentation Integration**
 - Merge all parallel outputs into cohesive documentation
 - Overall plan (basic design/requirements)
 - Detailed design specifications
-- Essential TODO list with task dependencies clearly mapped
+- Essential TODO list with implementation tasks only and dependencies clearly mapped
 
 ## Auto-Generated Documentation
 
@@ -124,12 +128,12 @@ The `/plan` command automatically generates three complementary documents in the
 - Technical specifications and architecture details
 - Implementation approach and considerations
 - Integration points and system design
-- **Test Strategy Section**: ONLY included if existing tests are detected in the project
 - **Cross-references section with paths to overall plan and TODO list documents**
 
 **3. TODO List Document** (`[subject]-todo-list.md`)
 
-- Essential tasks only (no optional items)
+- Essential implementation tasks only (no optional items)
+- No test tasks, documentation tasks, or performance monitoring tasks
 - Prioritized actionable tasks with clear ownership
 - **Task dependencies MUST be explicitly specified for each task (各タスクの依存関係を必ず明記)**
 - Task dependencies and sequencing requirements clearly mapped
@@ -166,7 +170,7 @@ The `/plan` command automatically generates three complementary documents in the
 
 - **Overall Plan**: Strategic framework with objectives (日本語で記述)
 - **Detailed Design**: Technical specifications, implementation approach, and integration details (日本語で記述)
-- **TODO List**: Essential tasks only with clearly mapped dependencies (no optional items) (日本語で記述・依存関係明記)
+- **TODO List**: Essential implementation tasks only with clearly mapped dependencies (no test/doc/monitoring tasks) (日本語で記述・依存関係明記)
 
 **Integrated Planning System:** Cross-referenced documents | Task dependency mapping
 
